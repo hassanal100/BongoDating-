@@ -2,270 +2,74 @@
 <html lang="sw">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bongo Dating - Watch Reels</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zagamuo Landing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-
+    /* Background gradient ya romantic look */
     body {
-      background: #fff;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
+      background: linear-gradient(135deg, #a80077, #66ffcc);
+      background-size: 300% 300%;
+      animation: gradientMove 10s ease infinite;
     }
 
-    header {
-      width: 100%;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      font-size: 1.4em;
-      font-weight: 600;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    .reels-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      padding: 15px;
-      padding-bottom: 100px;
-      width: 100%;
-      max-width: 950px;
+    /* Animation ya button wakati wa kubofya */
+    .btn:active {
+      transform: scale(0.93);
     }
 
-    .reel {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .reel:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    }
-
-    .thumbnail {
-      width: 100%;
-      height: 230px;
-      object-fit: cover;
-      filter: brightness(85%);
-      border-radius: 15px;
-      transition: filter 0.3s ease;
-    }
-
-    .reel:hover .thumbnail { filter: brightness(100%); }
-
-    .play-icon {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 2.5em;
-      color: #fff;
-      opacity: 0.85;
-      pointer-events: none;
-    }
-
-    .label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0,200,83,0.9);
-      color: #fff;
-      padding: 4px 8px;
-      border-radius: 8px;
-      font-size: 0.7em;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    footer {
-      width: 100%;
-      background: #ffe9e9;
-      border-top: 1px solid #ddd;
-      padding: 10px 0;
-      display: flex;
-      justify-content: space-around;
-      position: fixed;
-      bottom: 0; left: 0;
-    }
-
-    footer a {
-      text-decoration: none;
-      color: #ff4b2b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.9em;
-      transition: transform 0.2s ease;
-    }
-
-    footer a:hover { transform: scale(1.1); }
-    footer i { font-size: 1.3em; margin-bottom: 3px; }
-
-    /* MODALS */
-    .modal, .ad-modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.95);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      visibility: hidden;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 3000;
-    }
-
-    .modal.active, .ad-modal.active {
-      visibility: visible;
-      opacity: 1;
-    }
-
-    .modal iframe, .ad-modal iframe {
-      width: 90%;
-      height: 90%;
-      border: none;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 20px; left: 20px;
-      font-size: 2em;
-      color: #fff;
-      cursor: pointer;
-      z-index: 4000;
-      background: rgba(0,0,0,0.4);
-      border-radius: 50%;
-      padding: 8px 12px;
-    }
-
-    .ad-timer {
-      position: absolute;
-      bottom: 35px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 1em;
-      font-weight: 600;
-      text-align: center;
-      animation: fadein 1s ease;
-    }
-
-    @keyframes fadein {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 600px) {
-      .reels-container { grid-template-columns: 1fr 1fr; }
-      .thumbnail { height: 200px; }
+    /* Hover effect laini zaidi */
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
   </style>
 </head>
-<body>
-  <header>🎥 Bongo Reels</header>
+<body class="h-screen w-full flex items-center justify-center text-white relative overflow-hidden">
 
-  <div class="reels-container" id="reelsContainer"></div>
+  <!-- Overlay ya blur -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
-  <footer>
-    <a href="https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2" target="_blank">
-      <i class="fa-solid fa-house"></i>Home
-    </a>
-    <a href="https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2" target="_blank">
-      <i class="fa-solid fa-play-circle"></i>Watch
-    </a>
-  </footer>
+  <!-- Main content -->
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-6">
+    
+    <h1 class="text-4xl font-bold mb-10 drop-shadow-lg">
+      ❤️ Burudika Muda huu ❤️
+    </h1>
 
-  <!-- TANGAZO MODAL -->
-  <div class="ad-modal" id="adModal">
-    <iframe id="adFrame" src=""></iframe>
-    <div id="adTimer" class="ad-timer">Subiri video inafunguka hivi punde... (5)</div>
+    <!-- Buttons -->
+    <div class="space-y-6 w-full max-w-xs">
+
+      <!-- Button 1 -->
+      <a href="https://vitabushop.store/"
+         class="btn flex items-center justify-center gap-3 bg-white text-black font-semibold py-4 rounded-2xl shadow-lg transition-all duration-300 ease-out hover:bg-pink-600 hover:text-white">
+        <img src="https://i.ibb.co/t1xkXLy/1000104402.png" alt="Group" class="w-6 h-6">
+        JIUNGE KWENYE GROUP KWA 2000
+      </a>
+
+      <!-- Button 2 -->
+      <a href="https://vitabushop.store/"
+         class="btn flex items-center justify-center gap-3 bg-white text-black font-semibold py-4 rounded-2xl shadow-lg transition-all duration-300 ease-out hover:bg-pink-600 hover:text-white">
+        <img src="https://i.ibb.co/Q7NFRGJZ/1000117873-1.png" alt="Connection" class="w-6 h-6">
+        CONNECTION ZOTE
+      </a>
+
+      <!-- Button 3 -->
+      <a href="https://vitabushop.store/"
+         class="btn flex items-center justify-center gap-3 bg-white text-black font-semibold py-4 rounded-2xl shadow-lg transition-all duration-300 ease-out hover:bg-pink-600 hover:text-white">
+        <img src="https://i.postimg.cc/5NWbQGBt/IMG-20251116-WA0024.jpg" alt="Mikoa" class="w-6 h-6">
+        MLAYA MIKOA YOTE
+      </a>
+    </div>
+
+    <p class="mt-12 text-sm text-gray-300">VIP Videos</p>
   </div>
 
-  <!-- VIDEO MODAL -->
-  <div class="modal" id="videoModal">
-    <div class="close-btn" id="closeModal"><i class="fa-solid fa-times"></i></div>
-    <iframe id="videoFrame" src="" allowfullscreen></iframe>
-  </div>
-
-  <script>
-    const adLink = "https://askewrefusaltrashy.com/ss2ne7pc2?key=8cb8ce536c58526fcb90571e6bdc98c2";
-
-    const videos = [
-      { img: "https://i.postimg.cc/mhxt60nJ/1761312202822.jpg", link: "https://streamable.com/ficyip" },
-      { img: "https://i.postimg.cc/qR0L3Kqk/1761115156932.jpg", link: "https://streamable.com/crqa6b" },
-      { img: "https://i.postimg.cc/8Pk37jn6/1761312623169.jpg", link: "https://streamable.com/y6isyz" },
-      { img: "https://i.postimg.cc/4yx5xh4D/1761312553486.jpg", link: "https://streamable.com/ficyip" },
-    ];
-
-    const reelsContainer = document.getElementById("reelsContainer");
-    reelsContainer.innerHTML = videos.map((v, i) => `
-      <div class='reel' data-index='${i}' data-link='${v.link}'>
-        <img src='${v.img}' class='thumbnail'>
-        <div class='play-icon'><i class='fa-solid fa-play'></i></div>
-        <div class='label'>Free Video</div>
-      </div>
-    `).join('');
-
-    const adModal = document.getElementById('adModal');
-    const adFrame = document.getElementById('adFrame');
-    const adTimer = document.getElementById('adTimer');
-    const modal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('videoFrame');
-    const closeBtn = document.getElementById('closeModal');
-
-    document.addEventListener('click', e => {
-      const reel = e.target.closest('.reel');
-      if (reel) {
-        adFrame.src = adLink;
-        adModal.classList.add('active');
-        let timeLeft = 5;
-        adTimer.textContent = `Subiri video inafunguka hivi punde... (${timeLeft})`;
-
-        const countdown = setInterval(() => {
-          timeLeft--;
-          adTimer.textContent = `Subiri video inafunguka hivi punde... (${timeLeft})`;
-          if (timeLeft === 0) {
-            clearInterval(countdown);
-            adModal.classList.remove('active');
-            adFrame.src = '';
-            const link = reel.getAttribute('data-link');
-            videoFrame.src = link;
-            modal.classList.add('active');
-            console.log("Impression imeongezwa kwa tangazo hili 📈");
-          }
-        }, 1000);
-      }
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      videoFrame.src = '';
-    });
-
-    window.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-        videoFrame.src = '';
-      }
-    });
-  </script>
 </body>
 </html>
